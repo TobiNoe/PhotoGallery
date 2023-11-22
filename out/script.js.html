@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Array of images
+ * @var - Array with name pictures
+ */
+let pictures = ['golf1.jpg', 'golf2.jpg', 'golf3.jpg', 'golf4.jpg', 'golf5.jpg', 'golf6.jpg', 'golf7.jpg', 'golf8.jpg', 'golf9.jpg', 'golf10.jpg', 'golf11.jpg', 'golf12.jpg', 'golf13.jpg', 'golf14.jpg', 'golf15.jpg', 'golf16.jpg', 'golf17.jpg', 'golf18.jpg'];
+
+
+/**
+ * function render() - to render the mainGallery in the main-section
+ */
+function render() {
+    const mainGallery = document.getElementById('mainGallery');
+    mainGallery.innerHTML = '';
+
+    for (let i = 0; i &lt; pictures.length; i++) {
+        mainGallery.innerHTML += loadHtmlMainGallery(i);
+    }
+}
+
+
+/**
+ * loadHtmlMainGallery(i) - function return the HTML-code for the function render()
+ * @param {number} i - position in the array
+ * @returns - the html code to include into container
+ */
+function loadHtmlMainGallery(i) {
+    let pictureNumber = i + 1;
+    return /*html*/`&lt;img class="main-gallery-picture" onclick="hideShowGalleryPicture();showSelectedPicture(${pictureNumber})" src="./img/${pictures[i]}" alt="">`;
+}
+
+
+/**
+ * function hideShowGalleryPicture() - function toggle the css-class to show or hide the container, wich show the detail picture area
+ * @const {string} galleryPicture - contains the position of the container to include code
+ */
+function hideShowGalleryPicture() {
+    const galleryPicture = document.getElementById('detailGallery');
+    galleryPicture.classList.toggle('d-none');
+    galleryPicture.classList.toggle('detail-gallery');
+}
+
+
+/**
+ * Function showSelectedPicture(pictureNumber) - show the selected Image from the mainGallery
+ * @param {number} pictureNumber - contains the image-number of the image file
+ * @const {string} detailGalleryPicture - contains the position of the container to include code
+ * @var {number} pictureNumberPrevious - contains the image-number of the  previous image file
+ * @var {number} pictureNumberNext - contains the image-number of the  next image file
+ */
+function showSelectedPicture(pictureNumber) {
+    const detailGalleryPicture = document.getElementById('detailGalleryPicture');
+    let pictureNumberPrevious = pictureNumber - 1;
+    let pictureNumberNext = pictureNumber + 1;
+
+    detailGalleryPicture.innerHTML = '';
+    detailGalleryPicture.innerHTML += loadHtmlDetailGallery(pictureNumber, pictureNumberPrevious, pictureNumberNext);
+    /* aspectRatio(); */
+}
+
+
+/**
+ * function loadHtmlDetailGallery(pictureNumber, pictureNumberPrevious, pictureNumberNext) - function return the HTML-code for the function showSelectedPicture()
+ * @param {number} pictureNumber - contains the image-number of the image file
+ * @param {number} pictureNumberPrevious - contains the image-number of the previous image file
+ * @param {number} pictureNumberNext - contains the image-number of the next image file
+ * @returns - the html code to include into container
+ */
+function loadHtmlDetailGallery(pictureNumber, pictureNumberPrevious, pictureNumberNext) {
+    return /*html*/`
+    &lt;div class="detail-picture-navigation">
+    &lt;img class="back-forward-icon" onclick="previousPicture(${pictureNumberPrevious})" src="./icon/back.png" alt="">
+    &lt;img id="image" class="detail-picture" src="./img/golf${pictureNumber}.jpg" alt="">
+    &lt;img class="back-forward-icon" onclick="nextPicture(${pictureNumberNext})" src="./icon/forward.png" alt="">
+    &lt;/div>
+   `;
+}
+
+
+/**
+ * function previousPicture(pictureNumberPrevious) - check if the image is in the first position into the array pictures[] and call the 
+ * function showSelectedPicture()
+ * true - set pictureNumberPrevious = picture.length
+ * @param {number} pictureNumberPrevious - contains the image-number of the previous image file
+ * 
+ */
+function previousPicture(pictureNumberPrevious) {
+    if (pictureNumberPrevious &lt; 1) {
+        pictureNumberPrevious = pictures.length
+        showSelectedPicture(pictureNumberPrevious);
+    } else {
+        showSelectedPicture(pictureNumberPrevious);
+    }
+}
+
+
+/**
+ * function nextPicture(pictureNumberPrevious) - check if the image is in the last position into the array pictures[] and call the 
+ * function showSelectedPicture()
+ * true - set pictureNumberNext = 1 (first image-number of the image file)
+ * @param {number} pictureNumberNext - contains the image-number of the next image file
+ */
+function nextPicture(pictureNumberNext) {
+    if (pictureNumberNext > pictures.length) {
+        pictureNumberNext = 1;
+        showSelectedPicture(pictureNumberNext);
+    } else {
+        showSelectedPicture(pictureNumberNext);
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#galleryPicture">galleryPicture</a></li><li><a href="global.html#loadHtmlDetailGallery">loadHtmlDetailGallery</a></li><li><a href="global.html#loadHtmlMainGallery">loadHtmlMainGallery</a></li><li><a href="global.html#nextPicture">nextPicture</a></li><li><a href="global.html#pictureNumberNext">pictureNumberNext</a></li><li><a href="global.html#pictures">pictures</a></li><li><a href="global.html#previousPicture">previousPicture</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 13 2023 20:43:00 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

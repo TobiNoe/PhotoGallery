@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="template.js"></script>
+
+</head>
+
+<body onload="render(), includeHTML()">
+
+    <section w3-include-html="./templates/header.html"></section>
+    <selection class="main-background"></selection>
+
+    <section id="detailGallery" class="d-none">
+        <a class="detail-gallery-close" onclick="hideShowGalleryPicture()">close</a>
+        <div id="detailGalleryPicture" class="detail-gallery-picture"></div>
+    </section>
+
+    <section class="main">
+
+        <section id="mainGallery" class="main-gallery">
+        </section>
+
+    </section>
+
+    </selection>
+    <section w3-include-html="./templates/footer.html"></section>
+
+    <span class="back-icons"></span>
+
+</body>
+
+</html>
